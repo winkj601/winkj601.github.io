@@ -1,6 +1,10 @@
 <!doctype html>
 <html>
     <head> 
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+        <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
+
     <style>
         
         body {
@@ -27,28 +31,51 @@
    border: 6px solid #ff2759;
     margin: 0; 
 }
+         .page-header1   div 
+        {
+    width: 750px;
+    padding: 0px;
+   border-bottom: 6px solid #ff2759;
+    margin: 0; 
+}
         
     .Wifi-image div
             {
     width: 400px;
     padding: 10px;
 }       
- 
-    .underlined
+ .underlined
             {
    border-bottom: 2px solid #ff2759;
 }     
-    
-    .underlined-link
+        
+.underlined-link
          {
    border-bottom: 2px solid #1a6df2;
 }     
         
-   div .description {
+   .description div {
       text-align: justify;
-      line-height: 120%;
+      line-height: 600%;
 }     
-             
+        
+   .divider div
+        {
+    width: 750px;
+    padding: 0px;
+    border: 0.5px solid #494947;
+}     
+       
+    #map {
+    width: 770px;
+    height: 600px;
+        padding-top: 20px;
+}     
+    .buttons {
+    position: absolute;
+    top: 715px;
+    left: 70px;
+}     
         </style>
     </head>
     <body>
@@ -56,10 +83,18 @@
         <p><span class="Wifi-image"><div><img src="http://i.imgur.com/aorhG6W.jpg" height="500" width="770"></div></span></p>
     
         
-      <p><div><span class="description">This map shows the relationship between the <strong>availability of WiFi hotspots</strong> and an areas' <strong>median household<br> income</strong> at the census tract level. WiFi hotspots overproportionally serve a higher-income population: whereas <br>New York City's 2015 median household income (MHI) amounted to <span class="underlined"> $ 59,000</span>, the average MHI of census tracts<br> with WiFi hotspots is <span class="underlined">$ 72,000</span>.</span></div></p>
-
+      <div><span class="description">This map shows the relationship between the <strong>availability of WiFi hotspots</strong> and an areas' <strong>median household<br> income</strong> at the census tract level. WiFi hotspots overproportionally serve a higher-income population: whereas <br>New York City's 2015 median household income (MHI) amounted to <span class="underlined"> $ 59,000</span>, the average MHI of census tracts<br> with WiFi hotspots is <span class="underlined">$ 72,000</span>.</span></div>
         
-<p></p><iframe width="55%" height="600" frameborder="0" src="https://thenewschool.carto.com/u/winkj601/builder/355d9b88-f967-11e6-b7a4-0e3ff518bd15/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+    <div id="map"></div>
+    <div class="buttons">
+        <button class="Manhattan">WiFi hotspots in Manhattan</button>
+         <button class="Brooklyn">WiFi hotspots in Brooklyn</button>
+        <button class="Queens">WiFi hotspots in Queens</button><br>
+        <button class="Bronx">WiFi hotspots in the Bronx</button>
+        <button class="SI">WiFi hotspots in Staten Island</button>
+        
+        <button class="NYC">All WiFi hotspots</button>
+        </div>
 
      
 <p>The map uses data from the
@@ -67,6 +102,70 @@
 
     <p>If you have questions or feedback, please shoot me an <a href="mailto:winkj601@newschool.edu"><span class="underlined-link">email</span></a>!</p>
    
-
+ <script>
+            var WiFiLayer;
+            $(document).ready(function () {
+                cartodb.createVis('map', 'https://thenewschool.carto.com/u/winkj601/api/v2/viz/355d9b88-f967-11e6-b7a4-0e3ff518bd15/viz.json',    {          
+                    zoom: 11,
+                    center_lat: 40.737600,
+                    center_lon: -73.990173, 
+                     cartodb_logo: false
+                                })
+                .done(function (vis, layers) {
+                    WiFiLayer = layers[1].getSubLayer(1); 
+                    });
+                $('.Manhattan').click(function () {
+                    WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_plus_mhhi WHERE city ='New York'"); 
+                });
+                $('.Brooklyn').click(function () {
+                    WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_plus_mhhi WHERE city = 'Brooklyn'"); 
+                });
+                $('.Bronx').click(function () {
+                    WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_plus_mhhi WHERE city = 'Bronx'"); 
+                });
+                $('.SI').click(function () {
+                    WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_plus_mhhi WHERE city = 'Staten Island'"); 
+                });
+                $('.Queens').click(function () {
+                    WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_plus_mhhi WHERE city = 'Queens'"); 
+                });
+                $('.NYC').click(function () {
+                    WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_plus_mhhi");
+                    });
+            });
+        </script>
     </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
