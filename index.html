@@ -76,6 +76,16 @@
     top: 715px;
     left: 70px;
 }     
+    .sql-overlay {
+    background: white;
+    border-radius: 5px;
+    position: absolute;
+    padding: 5px;
+    top: 760px;
+    left: 565px;
+    font-family: sans-serif;
+    font-size: 12px;
+            }
         </style>
     </head>
     <body>
@@ -86,6 +96,7 @@
       <div><span class="description">This map shows the relationship between the <strong>availability of WiFi hotspots</strong> and an areas' <strong>median household<br> income</strong> at the census tract level. WiFi hotspots overproportionally serve a higher-income population: whereas <br>New York City's 2015 median household income (MHI) amounted to <span class="underlined"> $ 59,000</span>, the average MHI of census tracts<br> with WiFi hotspots is <span class="underlined">$ 72,000</span>.</span></div>
         
     <div id="map"></div>
+    <div class="sql-overlay"></div>
     <div class="buttons">
         <button class="Manhattan">WiFi hotspots in Manhattan</button>
          <button class="Brooklyn">WiFi hotspots in Brooklyn</button>
@@ -103,7 +114,7 @@
     <p>If you have questions or feedback, please shoot me an <a href="mailto:winkj601@newschool.edu"><span class="underlined-link">email</span></a>!</p>
    
  <script>
-            var WiFiLayer;
+     var WiFiLayer;
             $(document).ready(function () {
                 cartodb.createVis('map', 'https://thenewschool.carto.com/u/winkj601/api/v2/viz/355d9b88-f967-11e6-b7a4-0e3ff518bd15/viz.json',    {          
                     zoom: 11,
@@ -132,7 +143,21 @@
                 $('.NYC').click(function () {
                     WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_plus_mhhi");
                     });
-            });
+                });
+     var url = 'https://winkj601.carto.com/api/v2/sql?' + $.param({
+                   q: "SELECT COUNT (*) FROM winkj601.wifi_plus_mhhi"
+              });
+            $.getJSON(url)
+               .done(function(data) {
+                        // Once the data has loaded, update the text in the overlay
+                        //
+                        // If you want to see the data that is returned, uncomment this line:
+                        // console.log(data);
+                        //
+                        // In this case we get data.rows[0].count, get rows from 
+                        // data, get the first row, then get count from that.
+                      $('.sql-overlay').text('There are ' + data.rows[0].count + ' WiFi hotspots in NYC')
+                  });
         </script>
     </body>
 </html>
