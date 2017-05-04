@@ -1,0 +1,346 @@
+<!doctype html>
+<html>
+    <head> 
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+        <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
+
+    <style>
+        
+        body {
+    font-family: sans-serif;
+    font-size: 16px;
+    color: #494947;
+}
+        a {
+    font-family: sans-serif;
+    color: #494947; 
+    text-decoration: none;
+}
+   .page-header {
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color:#494947;
+}
+      .page-header   div 
+        {
+    width: 79%;
+    min-width: 800px;
+    padding-left: 40px; 
+}
+        
+    .Wifi-image div
+            {
+    padding: 10px;
+    margin-left: 20px; 
+    left: 8%; 
+}        
+        
+.underlined-link
+         {
+   border-bottom: 2px solid #1F7F8C;
+}     
+.underlined-link_red
+         {
+   border-bottom: 2px solid #E43A2D;
+}    
+        
+.underlined-link_yellow
+         {
+   border-bottom: 2px solid #F2AA23;
+}    
+        
+   .description div {
+       width: 80%;
+       min-width: 800px;
+       max-width: 1200px; 
+       margin-left: 40px;
+       line-height: 20px; 
+       text-align: justify;
+       }
+        
+    .legend-text div{
+       width: 80%; 
+       margin-left: 60px;
+       line-height: 20px; 
+       text-align: justify;
+        font-size: 12px; 
+       }
+        
+    .legend-box {
+       background: white; 
+       width: 210px;
+       height: 410px;
+       position: absolute; 
+       top: 508px;
+       left: 10%;
+       padding: 5px;
+       padding-left: 14px;
+       font-size: 10px; 
+       }   
+        
+        
+    #map {
+    width:80%;
+    min-width: 800px;
+    max-width: 1200px; 
+    height: 700px;
+    padding-top: 20px;
+    margin-left: 40px; 
+}     
+    .buttons {
+    position: absolute;
+    top: 150%;
+    left: 10%;
+}     
+          
+    .sql-overlay {
+    background: white;
+    border-radius: 5px;
+    position: absolute;
+    padding: 5px;
+    padding-left: 10px;
+    top: 120%;
+    left: 70%;
+    width: 200px;
+    font-family: sans-serif;
+    font-size: 12px;
+            }
+     .type-checkbox {
+                position: absolute;
+                top: 15px;
+                left: 25%;
+            }    
+        </style>
+    </head>
+    <body>
+        <br><br>
+        <span class="page-header"><div>   MAPPING NEW YORK CITY'S DIGITAL DIVIDE</div></span><br>
+        
+        <span class="description"><div>
+       <a name="about"><span style="font-size: 20px"><strong>about this map</strong></span></a> 
+       <br><p style="line-height: 25px;">
+       Access to high speed internet has become a crucial resource in the 21st century, decisive for access to jobs and economic mobility, information and education, and participation in the social and political spheres. Yet, as with access to other types of infrastructure such as the public transit system, streets, school, or parks, access to the Internet, too, is characterized by socio-spatial disparities. Access to high-speed internet is differentiated based on geographies, class, race, and ethnicity, perpetuationg existing forms of exlusion. But since the physical infrastructures that the internet relies on remain hidden in our everyday lives, buried below our feet, so do the inequities in its access.<br><br>
+        
+            This map aims to uncover the digital divide in 21st century New York by mapping the "invisible" internet infrastructure that is required for access to the internet and relating it to demographic and internet use data. Due to the limited data available (read more in the <em><span class="underlined-link"><a href="#data-used" style="">data section</a></span></em>), the map is only a first step in doing so. However, I hope that it contributes to ongoing efforts of making visible the invisible (such as the crowdsourced <em><span class="underlined-link"><a href="http://newcloudatlas.org/#4/41.97/-51.24" target="_blank">New Cloud Atlas</a></span></em>).<br><br>
+            
+            How to use this map? The map lets you compare and look for relationships among the various data layers by un/selecting them in the checkboxes next to the legend. For an explenation of the main findings and trends, please see the <em><span class="underlined-link"><a href="#discussion" style="">discussion section</a></span></em>. 
+            
+            </p>
+       </div></span>
+        
+    <div id="map"></div>
+        
+        
+        
+        
+        <div class="legend-box">
+            
+            
+            <div>
+            <img style="position:absolute; left:191px; top:42px; width:4%;" src="http://i.imgur.com/xmnmr1z.png"/>
+            </div>
+            <div>
+            <img style="position:absolute; left:189px; top:60px; width:5%;" src="http://i.imgur.com/buxQHis.png"/>
+            </div>
+            <div>
+            <img style="position:absolute; left:35px; top:147px; width:70%;" src="http://i.imgur.com/j7wK8yB.png"/>
+            </div>
+            <div>
+            <img style="position:absolute; left:35px; top:205px; width:70%;" src="http://i.imgur.com/67UQr3S.png"/>
+            </div>
+            <div>
+            <img style="position:absolute; left:36px; top:301px; width:70%;" src="http://i.imgur.com/0VMOUWd.png"/>
+            </div>
+             <div>
+            <img style="position:absolute; left:185px; top:355px; width:9%;" src="http://i.imgur.com/aFN9BCj.png"/>
+            </div>
+        <p style="color: #579fa9"><strong>PHYSICAL INTERNET INFRASTRUCTURE <a href="#1" style="text-decoration: underline"><sup>1</sup></a></strong></p>
+            
+            <input type="checkbox" class="WiFi-checkbox"><strong> WiFi Hotspots</strong> 
+            <br>
+            
+            <input type="checkbox" class="Commercial-checkbox"><strong> Commercial Broadband Access</strong> 
+            
+            
+        <p style="color: #E43A2D"><br><br><strong>COMPUTER AND INTERNET USE <a href="#2" style="text-decoration: underline"><sup>2</sup></a></strong></p>
+            <input type="checkbox" class="Computer-checkbox"><strong> No Computer at Home</strong> 
+            <br><br><br><br>
+            
+            <input type="checkbox" class="Broadband-checkbox"><strong> Internet Availability </strong>
+            
+
+        <p style="color: #F2AA23"><br><br><br><br><strong>SOCIAL CHARACTERISTICS <a href="#2" style="text-decoration: underline"><sup>3</sup></a></strong></p>
+            
+            <input type="checkbox" class="MHHI-checkbox"><strong> Median Household Income</strong> 
+            <br><br><br><br>
+            
+            <input type="checkbox" class="race-checkbox"><strong> Race-Dot Layer </strong><br><div style="font-size: 9px; line-height:8 px; position: absolute; left: 35px;">    white<br>african american<br>asian<br>hispanic<br>other<br></div>
+            
+            <script type="template/html" id="popup-template">
+            <div class="cartodb-popup v2">
+                <a href="#close" class="cartodb-popup-close-button close">x</a>
+                <div class="cartodb-popup-content-wrapper">
+                  <div class="cartodb-popup-content">
+                    This census tract has a <span style="text-decoration: underline;">median household income</span> of  <span style= "color: ##f2aa23;">$ {{mhhi}</span>
+                  </div>
+                </div>
+            
+                <div class="cartodb-popup-tip-container"></div>
+            </div>
+        </script>
+
+         <script type="template/html" id="popup-template2">
+          <div class="cartodb-popup v2">
+           <a href="#close" class="cartodb-popup-close-button close">x</a>
+           <div class="cartodb-popup-content-wrapper">
+             <div class="cartodb-popup-content">
+               check
+             </div>
+          </div>
+           <div class="cartodb-popup-tip-container"></div>
+         </div>
+        </script>
+            
+            
+        </div>
+    
+    <div class="buttons">
+        <button class="above59k">WiFi hotspots in high-income areas</button>
+         <button class="below59k">WiFi hotspots in low-income areas</button><br>
+        <button class="white">WiFi hotspots in majority white areas</button>
+        <button class="black">WiFi hotspots in majority black areas</button>
+        <button class="hispanic">WiFi hotspots in majority hispanic areas</button>
+        <button class="asian">WiFi hotspots in majority asian areas</button>
+        <button class="NYC">All WiFi hotspots</button>
+        </div>
+
+    <span class="description"><div>
+        <a name="data-used"><br><br><span style="font-size: 20px"><strong>about the used data</strong></span></a>
+       <br><p style="line-height: 25px;">This map combines a multitude of data sets relating to the following three themes: 
+        
+        
+        <br><br><span style="color: #579fa9; "><a name="1"><sup>1</sup></a> <strong>PHYSICAL INTERNET INFRASTRUCTURE</strong></span><br>
+        <span style="line-height: 25px;">Information on the physical internet infrastructure includes all <strong>free available WiFi hotspots</strong> (using data from <em><span class="underlined-link"><a href="https://data.cityofnewyork.us/Social-Services/NYC-Wi-Fi-Hotspot-Locations/a9we-mtpn/data" target="_blank">NYC's Open Data Portal</a></span></em>) and <strong>available broadband internet connections in commercial buildings</strong> throuhgout NYC (using data from <em><span class="underlined-link"><a href="https://nycbbmap.com/#/map" target="_blank">NYC's Broadband Map</a></span></em>).<br></span>
+       <br><span style="color: #E43A2D"><a name="2"><sup>2</sup></a> <strong>COMPUTER AND INTERNET USE</strong></span><br>
+        <span style="line-height: 25px;">Information on access to and use of computers and the internet includes the percentage of <strong>households without computers at home</strong> per congressional district (using the Census Bureau's <em><span class="underlined-link_red"><a href="https://www.census.gov/" target="_blank">American Community Survey 2015</a></span></em>) and the percentage of <strong>fixed residential internet connections</strong> with at least 10 Mbps downstream and 1 Mbps upstream capacity per census tract (using data from the <em><span class="underlined-link_red"><a href="https://www.fcc.gov/reports-research/maps/residential-fixed-connections-10-mbps-1-mbps-december-2015/#10/23.7753/-108.4708/" target="_blank">Federal Communications Commission 2015</a></span></em>).</span><br>
+        <br><span style="color: #F2AA23"><a name="3"><sup>3</sup></a> <strong>SOCIAL CHARACTERISTICS</strong></span><br>
+        <span style="line-height: 25px;">
+        And finally, the first two data layers can be compared to demographic information, including the <strong>median household incomes</strong> at the census tract level in US$ and a <strong>race-dot layer</strong> showing the ethnic and racial composition of NYC with 1 dot representing 100 people (both data sets from the Census Bureau's <em><span class="underlined-link_yellow"><a href="https://www.census.gov/" target="_blank">American Community Survey 2015</a></span></em>).
+        .</p><br>
+    
+        <a name="discussion"><br><br><span style="font-size: 20px"><strong>discussion</strong></span></a>
+        <br><p style="line-height: 25px;">The map reveals striking disparities in access to high-speed internet.<br><br>
+        <strong>WiFi hotspots</strong> underserve lower-income populations: Out of the 2061 WiFi hotspots in the city, 1090 (or 53%) are located in higher-income areas with an above average median household income (MHHI that already have greater internet access. The remaining 971 hotspots (or 47%) are located in census tracts with an below average MHHI and generally lower internet access, and only 220 (or 11%) serve very low-income populations with an MHHI below $20,000. Put differently, while city-wide MHHI amounts to $59,000, the average MHHI of census tracts that provide free WiFi hotspots is $72,000. WiFi hotspots also disproportionally serve white neighborhoods: Out of the 2062 WiFi hotspots, 909 (or 44%) are located in majority white neighborhoods, and only 700 (or 35%) in majority non-white neighborhoods (thereof, 335 or 16% in majority African American areas, 309 or 15% in majority Hispanic, and 56 or 3% in majority Asian).<br><br> 
+        <strong>Availability of commercial broadband</strong> is also concentrated in higher-income and majority white neighborhoods. However, since the other layers on internet and computer use, and demographic characteristics are based on where people live, comparing thise layers has limited reliability. It shows, however, that commercial districts are concentrated in or near wealthier and whiter neighborhoods.<br><br> The <strong>availability of computers at home</strong>, too, correlates with income levels and the ethnic and racial composition of neighborhoods. Congressional districts with high percentages of households that do not own a computer (that is 14% and higher) are mainly located in the South Bronx, Northern Manhattan, and Central Brooklyn. These areas have below average MHHIs and high concentrations of minority populations.<br><br>
+        The more granular data on <strong>access to broadband internet subscriptions</strong> show the digital divide along lines of class and race even more clearly. Census tracts with below average percentages of households with fixed internet subscriptions (that is 75% or lower) are concentrated in areas with below average MHHIs and high concentrations of minority populations. 
+</p><br>
+        <a name="comments-feedback"><br><br><span style="font-size: 20px"><strong>comments, questions & feedback </strong></span></a>
+       <br><p style="line-height: 25px;">Do you have ideas on additional data sets that could improve this map, have other comments or feedback, want to use the map, or have questions? Please shoot me an <a href="mailto:winkj601@newschool.edu"><span class="underlined-link">email</span></a>!</p><br><br><br>
+        
+    <em>Map and web design by Jakob Winkler</em><br><br>
+        
+        
+        
+    </div></span>
+
+
+   
+ <script>
+     var WiFiLayer;
+     var CommercialLayer;
+     var ComputerLayer;
+     var BroadbandLayer; 
+     var RaceLayer;
+     var MHHILayer; 
+     
+            $(document).ready(function () {
+                cartodb.createVis('map', 'https://thenewschool.carto.com/u/winkj601/api/v2/viz/a9384178-6f2f-4eb0-8686-472bdbac996b/viz.json',    {          
+                    zoom: 11,
+                    center_lat: 40.737600,
+                    center_lon: -73.990173, 
+                     cartodb_logo: false
+                                })
+                .done(function (vis, layers) {
+                    WiFiLayer = layers[1].getSubLayer(5);
+                    CommercialLayer = layers[1].getSubLayer(4);
+                    ComputerLayer = layers[1].getSubLayer(3);
+                    BroadbandLayer = layers[1].getSubLayer(2);
+                    RaceLayer = layers[1].getSubLayer(1);
+                    MHHILayer = layers[1].getSubLayer(0);
+                    
+                    CommercialLayer.hide();
+                    ComputerLayer.hide();
+                    BroadbandLayer.hide(); 
+                    RaceLayer.hide();
+                    
+                    WiFiLayer.infowindow.set('sanitizeTemplate', false);
+                    MHHILayer.infowindow.set('sanitizeTemplate', false);
+                    WiFiLayer.infowindow.set('template', $('#popup-template').html());
+                    MHHILayer.infowindow.set('template', $('#popup-template2').html());
+                
+                });
+                
+                
+                $('.above59k').click(function () {
+                    WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_plus_mhhi WHERE mhhi >=59000");    
+                });
+                $('.below59k').click(function () {
+                    WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_mhhiandrace WHERE mhhi <=59000"); 
+                });
+                 $('.white').click(function () {
+                    WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_mhhiandrace WHERE race_ct_2015_white_perc >=50"); 
+                });
+                $('.black').click(function () {
+                    WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_mhhiandrace WHERE race_ct_2015_black_perc >= 50"); 
+                });
+                $('.hispanic').click(function () {
+                    WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_mhhiandrace WHERE race_ct_2015_hisp_perc >= 50"); 
+                });
+                $('.asian').click(function () {
+                    WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_mhhiandrace WHERE race_ct_2015_asian_perc >= 50"); 
+                });
+                $('.NYC').click(function () {
+                    WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_mhhiandrace");
+                    });
+                });
+    
+         
+        
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
