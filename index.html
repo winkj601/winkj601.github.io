@@ -70,18 +70,18 @@
         
     .legend-box {
        background: white; 
-       width: 220px;
-       height: 410px;
+       width: 210px;
+       height: 400px;
        position: absolute; 
-       top: 80%;
-       left: 10%;
+       top: 755px;
+       left: 65%;
        padding: 5px;
        padding-left: 14px;
        font-size: 10px; 
        }   
         
         
-    #map {
+    .map {
     width:80%;
     min-width: 800px;
     max-width: 1200px; 
@@ -89,29 +89,7 @@
     padding-top: 20px;
     margin-left: 40px; 
 }     
-    .buttons {
-    position: absolute;
-    top: 165%;
-    left: 10%;
-}     
           
-    .sql-overlay {
-    background: white;
-    border-radius: 5px;
-    position: absolute;
-    padding: 5px;
-    padding-left: 10px;
-    top: 120%;
-    left: 70%;
-    width: 200px;
-    font-family: sans-serif;
-    font-size: 12px;
-            }
-     .type-checkbox {
-                position: absolute;
-                top: 15px;
-                left: 25%;
-            }    
         </style>
     </head>
     <body>
@@ -125,96 +103,62 @@
         
             This map aims to uncover the digital divide in 21st century New York by mapping the "invisible" internet infrastructure that is required for access to the internet and relating it to demographic and internet use data. Due to the limited data available (read more in the <em><span class="underlined-link"><a href="#data-used" style="">data section</a></span></em>), the map is only a first step in doing so. However, I hope that it contributes to ongoing efforts of making visible the invisible (such as the crowdsourced <em><span class="underlined-link"><a href="http://newcloudatlas.org/#4/41.97/-51.24" target="_blank">New Cloud Atlas</a></span></em>).<br><br>
             
-            How to use this map? The map lets you compare and look for relationships among the various data layers by un/selecting them in the checkboxes next to the legend. For an explenation of the main findings and trends, please see the <em><span class="underlined-link"><a href="#discussion" style="">discussion section</a></span></em>. 
+            How to use this map? The map lets you compare and look for relationships among the various data layers by un/selecting them. For an explenation of the main findings and trends, please see the <em><span class="underlined-link"><a href="#discussion" style="">discussion section</a></span></em>. 
             
             </p>
        </div></span>
         
-    <div id="map"></div>
-        
-        
+        <p></p><div class="map"><iframe width="100%" mid-widt="800px" max-width= "1200px" height="700" padding-top="20px" margin-left="40px" frameborder="0" src="https://thenewschool.carto.com/u/winkj601/builder/a9384178-6f2f-4eb0-8686-472bdbac996b/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe></div>
         
         
         <div class="legend-box">
             
             
             <div>
-            <img style="position:absolute; left:191px; top:42px; width:4%;" src="http://i.imgur.com/xmnmr1z.png"/>
+            <img style="position:absolute; left:190px; top:41px; width:4%;" src="http://i.imgur.com/xmnmr1z.png"/>
             </div>
             <div>
-            <img style="position:absolute; left:189px; top:60px; width:5%;" src="http://i.imgur.com/buxQHis.png"/>
+            <img style="position:absolute; left:189px; top:62px; width:5%;" src="http://i.imgur.com/buxQHis.png"/>
             </div>
             <div>
-            <img style="position:absolute; left:35px; top:147px; width:70%;" src="http://i.imgur.com/zXn0xtq.png"/>
+            <img style="position:absolute; left:35px; top:147px; width:70%;" src="http://i.imgur.com/qAyjLZF.pngx"/>
             </div>
             <div>
-            <img style="position:absolute; left:35px; top:205px; width:70%;" src="http://i.imgur.com/67UQr3S.png"/>
+            <img style="position:absolute; left:35px; top:198px; width:70%;" src="http://i.imgur.com/67UQr3S.png"/>
             </div>
             <div>
-            <img style="position:absolute; left:36px; top:301px; width:70%;" src="http://i.imgur.com/0VMOUWd.png"/>
+            <img style="position:absolute; left:36px; top:289px; width:70%;" src="http://i.imgur.com/0VMOUWd.png"/>
             </div>
              <div>
-            <img style="position:absolute; left:185px; top:355px; width:9%;" src="http://i.imgur.com/aFN9BCj.png"/>
+            <img style="position:absolute; left:185px; top:345px; width:9%;" src="http://i.imgur.com/aFN9BCj.png"/>
             </div>
         <p style="color: #579fa9"><strong>PHYSICAL INTERNET INFRASTRUCTURE <a href="#1" style="text-decoration: underline"><sup>1</sup></a></strong></p>
             
-            <input type="checkbox" class="WiFi-checkbox"><strong> WiFi Hotspots</strong> 
-            <br>
+            <strong>WiFi Hotspots</strong> 
+            <br><br>
             
-            <input type="checkbox" class="Commercial-checkbox"><strong> Commercial Broadband Access</strong> 
+           <strong> Commercial Broadband Access</strong> 
             
             
         <p style="color: #E43A2D"><br><br><strong>COMPUTER AND INTERNET USE <a href="#2" style="text-decoration: underline"><sup>2</sup></a></strong></p>
-            <input type="checkbox" class="Computer-checkbox"><strong> No Computer at Home</strong> 
+            <strong> No Computer at Home</strong> 
             <br><br><br><br>
             
-            <input type="checkbox" class="Broadband-checkbox"><strong> Internet Availability </strong>
+            <strong> Internet Availability </strong>
             
 
         <p style="color: #F2AA23"><br><br><br><br><strong>SOCIAL CHARACTERISTICS <a href="#2" style="text-decoration: underline"><sup>3</sup></a></strong></p>
             
-            <input type="checkbox" class="MHHI-checkbox"><strong> Median Household Income</strong> 
-            <br><br><br><br>
+            <strong> Median Household Income</strong> 
+            <br><br><br><br><br>
             
-            <input type="checkbox" class="race-checkbox"><strong> Race-Dot Layer </strong><br><div style="font-size: 9px; line-height:8 px; position: absolute; left: 35px;">    white<br>african american<br>asian<br>hispanic<br>other<br></div>
+            <strong> Race-Dot Layer </strong><br><div style="font-size: 9px; line-height:8 px; position: absolute; left: 35px;">    white<br>african american<br>asian<br>hispanic<br>other<br></div>
             
-            <script type="template/html" id="popup-template">
-            <div class="cartodb-popup v2">
-                <a href="#close" class="cartodb-popup-close-button close">x</a>
-                <div class="cartodb-popup-content-wrapper">
-                  <div class="cartodb-popup-content">
-                    This census tract has a <span style="text-decoration: underline;">median household income</span> of  <span style= "color: ##f2aa23;">$ {{mhhi}</span>
-                  </div>
-                </div>
-            
-                <div class="cartodb-popup-tip-container"></div>
-            </div>
-        </script>
-
-         <script type="template/html" id="popup-template2">
-          <div class="cartodb-popup v2">
-           <a href="#close" class="cartodb-popup-close-button close">x</a>
-           <div class="cartodb-popup-content-wrapper">
-             <div class="cartodb-popup-content">
-               check
-             </div>
-          </div>
-           <div class="cartodb-popup-tip-container"></div>
-         </div>
-        </script>
+          
             
             
         </div>
     
-    <div class="buttons">
-        <button class="above59k">WiFi hotspots in high-income areas</button>
-         <button class="below59k">WiFi hotspots in low-income areas</button><br>
-        <button class="white">WiFi hotspots in majority white areas</button>
-        <button class="black">WiFi hotspots in majority black areas</button>
-        <button class="hispanic">WiFi hotspots in majority hispanic areas</button>
-        <button class="asian">WiFi hotspots in majority asian areas</button>
-        <button class="NYC">All WiFi hotspots</button>
-        </div>
 
     <span class="description"><div>
         <a name="data-used"><br><br><span style="font-size: 20px"><strong>about the used data</strong></span></a>
@@ -245,67 +189,7 @@
         
     </div></span>
 
-
-   
- <script>
-     var WiFiLayer;
-     var CommercialLayer;
-     var ComputerLayer;
-     var BroadbandLayer; 
-     var RaceLayer;
-     var MHHILayer; 
-     
-            $(document).ready(function () {
-                cartodb.createVis('map', 'https://thenewschool.carto.com/u/winkj601/api/v2/viz/a9384178-6f2f-4eb0-8686-472bdbac996b/viz.json',    {          
-                    zoom: 11,
-                    center_lat: 40.737600,
-                    center_lon: -73.990173, 
-                     cartodb_logo: false
-                                })
-                .done(function (vis, layers) {
-                    WiFiLayer = layers[1].getSubLayer(5);
-                    CommercialLayer = layers[1].getSubLayer(4);
-                    ComputerLayer = layers[1].getSubLayer(3);
-                    BroadbandLayer = layers[1].getSubLayer(2);
-                    RaceLayer = layers[1].getSubLayer(1);
-                    MHHILayer = layers[1].getSubLayer(0);
-                    
-                    CommercialLayer.hide();
-                    ComputerLayer.hide();
-                    BroadbandLayer.hide(); 
-                    RaceLayer.hide();
-                    
-                    WiFiLayer.infowindow.set('sanitizeTemplate', false);
-                    MHHILayer.infowindow.set('sanitizeTemplate', false);
-                    WiFiLayer.infowindow.set('template', $('#popup-template').html());
-                    MHHILayer.infowindow.set('template', $('#popup-template2').html());
-                
-                });
-                
-                
-                $('.above59k').click(function () {
-                    WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_plus_mhhi WHERE mhhi >=59000");    
-                });
-                $('.below59k').click(function () {
-                    WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_mhhiandrace WHERE mhhi <=59000"); 
-                });
-                 $('.white').click(function () {
-                    WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_mhhiandrace WHERE race_ct_2015_white_perc >=50"); 
-                });
-                $('.black').click(function () {
-                    WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_mhhiandrace WHERE race_ct_2015_black_perc >= 50"); 
-                });
-                $('.hispanic').click(function () {
-                    WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_mhhiandrace WHERE race_ct_2015_hisp_perc >= 50"); 
-                });
-                $('.asian').click(function () {
-                    WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_mhhiandrace WHERE race_ct_2015_asian_perc >= 50"); 
-                });
-                $('.NYC').click(function () {
-                    WiFiLayer.setSQL("SELECT * FROM winkj601.wifi_mhhiandrace");
-                    });
-                });
-    
+<script>
          
         
         </script>
